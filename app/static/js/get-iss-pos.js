@@ -94,38 +94,3 @@ setInterval(function() {
       
           });
   }, 5000); 
-  /*
-var i = -1;
-var latitude = [];
-var longitude = [];
-// Chiamo l'API per il tracking dell'oggetto, mostro il risultato sulla mappa
-setInterval(function() {
-        if (i == -1 || i == 300) // è il primo passo o sono passati i 5 minuti, effettua un'altra API
-        {
-            fetch(apiRequest).then(response => {
-                return response.json();
-            }).then(data => {
-
-                latitude = [];
-                longitude = [];
-                for (var x = 0; x < data['positions'].length; x++){ // prendi i nuovi dati
-                    latitude.push(data['positions'][x].satlatitude);
-                    longitude.push(data['positions'][x].satlongitude);
-                }
-                drawPolyline(map, data['positions']);   // Traccio la traiettoria che l'oggetto percorrerà nei prossimi 5 minuti
-
-            });
-            i = 0;
-        }
-
-        var lat = latitude[i];
-        var lng = longitude[i];
-
-        iss = new L.marker([lat, lng], {icon: issIcon}).addTo(map);
-        popupOnMouseOver(iss,"I am the " + data['info'].satname + "!");
-        
-        map.setView([lat,lng], 3, {animation: true});
-        i = i + 1;
-        
-}, 2000);
-*/
