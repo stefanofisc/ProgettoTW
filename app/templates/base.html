@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% if titolo %}
+  <title>Space Valley - {{ titolo }}</title>
+  {% else %}
+  <title>Space Valley</title>
+  {% endif %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/navbar.css" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  {% block styles %}{% endblock %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  {% block scripts %}{% endblock %}
+</head>
+
+<body>
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  <div class="topnav">
+    <a class="topnav-brand" href="/">
+      <img src="/static/img/astronaut.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    </a>
+    <li><a href="/index">Home</a></li>
+    <li><a href="/news">News</a></li>
+    <li><a href="/satellite/25544">Space Station</a></li>
+    <li><a href="/visualpasses">Visual passes</a></li>
+    <li><a href="/about">About</a></li>
+    <div class="topnav-right">
+      {% if utente[0] == 'Guest' %}
+
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
+
+      {% elif utente[1] == True %}
+      <li><a href="/posts/new">Crea post</a></li>
+      <li><a href="/logout">Logout</a></li>
+
+      {% else %}
+      <li><a href="/logout">Logout</a></li>
+      {% endif %}
+    </div>
+  </div>
+  <hr>
+  {% block content %}{% endblock %}
+  <footer>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          {% block footer %}{% endblock %}
+        </div>
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+          Go to top <a href="#top"><img src="/static/img/gototop.png" width="20" height="20"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

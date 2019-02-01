@@ -1,0 +1,170 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<form method=post>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>
+                <img src="/static/img/telescope.png" width="65" height="65" class="d-inline-block align-top" alt="">
+                {{titolo}}
+            </h1>
+            <p>Scopri quale oggetto è nel tuo cielo!</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="post">
+                    <div class="page-header">
+                        <h1>Cos'è visual passes</h1>
+                    </div>
+                    <div class="page-body">
+                        <p class="text-justify">
+                            Con visual passes sei in grado di determinare quando e per quanto tempo un satellite
+                            sarà visibile nel tuo cielo. La precisione è garantita al secondo; saprai con
+                            esattezza l'ora di inizio dell'evento, l'ora di massima visibilità e quella di
+                            fine evento.
+                        </p>
+                    </div>
+                </div>
+                </br>
+                <div class="post">
+                    <div class="page-header">
+                        <h1>Come compilare il form</h1>
+                    </div>
+                    <div class="page-body">
+                        <p class="text-justify">
+                            Inserisci i parametri giusti per ottenere il miglior risultato!
+                            Ecco come compilare il form:
+                            <li><b>NORAD id:</b> inserisci l'id del satellite che più ti interessa.
+                                Consulta il <a href="{{ url_for('about') }}">catalogo NORAD id</a> per tutti i
+                                dettagli.
+                            </li>
+                            <li><b>Giorni di previsione:</b> inserisci un valore che rappresenterà
+                                il numero di giorni prossimi di previsione, a partire da oggi.
+                            </li>
+                            <li><b>Tempo visibilità:</b> indica il tempo minimo (in secondi) per il quale vuoi
+                                che il satellite sarà visibile nel tuo cielo
+                            </li>
+                        </p>
+                    </div>
+                </div>
+                </br>
+
+                <div class="post">
+                    <div class="page-header">
+                        <h1>Risultato finale</h1>
+                    </div>
+                    <div class="page-body">
+                        <p class="text-justify">
+                            Ti verrà mostrata sullo schermo una lista di parametri.
+                            Per venire incontro alle tue esigenze, ti spiego qui il significato
+                            di questi:
+                            <li><b>Inizio:</b> data e ora inizio passaggio</li>
+                            <li><b>StartAz:</b> azimuth del satellite ad inizio passaggio (in gradi)</li>
+                            <li><b>StartAzCompass:</b> azimuth del satellite ad inizio passaggio (N, NE, E, SE, S, SW, W, NW)</li>
+                            <li><b>StartEl:</b> elevazione del satellite ad inizio passaggio</li>
+                            <li><b>Max:</b> data e ora di massima elevazione durante il passaggio:</li>
+                            <li><b>MaxAz:</b> azimuth del satellite durante la massima elevazione del passaggio (in gradi)</li>
+                            <li><b>MaxAzCompass:</b> azimuth del satellite durante la massima elevazione del passaggio (N, NE,
+                                E, SE, S, SW, W, NW)</li>
+                            <li><b>MaxEl:</b> elevazione del satellite durante la massima elevazione del passaggio</li>
+                            <li><b>Fine:</b> data e ora fine passaggio</li>
+                            <li><b>EndAz:</b> azimuth del satellite a fine passaggio (in gradi)</li>
+                            <li><b>EndAzCompass:</b> azimuth del satellite a fine passaggio (N, NE, E, SE, S, SW, W, NW)</li>
+                            <li><b>EndEl:</b> elevazione del satellite a fine passaggio</li>
+                            <li><b>Durata:</b> durata totale di visibilità del passaggio (in secondi)</li>
+                            Nota: le elevazioni e gli azimuth sono relativi all'osservatore, in gradi.
+                        </p>
+                    </div>
+                </div>
+                </br>
+                <div class="post">
+                    <div class="page-header">
+                        <h1>La tua posizione</h1>
+                    </div>
+                    <div class="page-body">
+                        {% if coord %}
+                        <p>
+                            Le tue coordinate:
+                            <li>Lat: {{ coord['latitude'] }}</li>
+                            <li>Lon: {{ coord['longitude'] }}</li>
+                            <li>City: {{ coord['city'] }}</li>
+                            <li>Region: {{ coord['region_name'] }}</li>
+                            <li>Country: {{ coord['country_name'] }}</li>
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+                </br>
+            </div>
+            <div class="col-sm-4">
+                <div class="post">
+                    <div class="page-header">
+                        <h1>Calcola</h1>
+                    </div>
+                    <div class="page-body">
+                        <dl>
+                            <dt>NORAD id</dt>
+                            {{ render_field(form.norad_id) }}
+                            <dt>Giorni di previsione</dt>
+                            {{ render_field(form.days) }}
+                            <dt>Tempo visibilità</dt>
+                            {{ render_field(form.min_visibility) }}
+                        </dl>
+                        <p><button type="submit" class="btn btn-primary btn-large btn-block">Calcola</button></p>
+                    </div>
+                </div>
+                </br>
+            </div>
+            <div class="col-sm-4">
+
+                {% if package %}
+                {% set count = namespace(a=0) %}
+                <div class="post">
+                    <h3>Nome: </br>{{ nome }} </h3>
+                    <h3>Passaggi: {{ passaggi }} </h3>
+                </div>
+                </br>
+                {% for data in package %}
+                <div class="post">
+                    <div class="page-header">
+                        <h1>Passaggio: {{ count.a +1 }}</h1>
+                    </div>
+                    <div class="page-body">
+                        <h3>Dati principali:</h3>
+                        <li>Inizio: {{ data.startUTC }}</li>
+                        <li>Fine: {{ data.endUTC }}</li>
+                        <li>Durata: {{ data.duration }} sec</li>
+                        <h3>Dettagli:</h3>
+                        <li>StartAz: {{ data.startAz }} °</li>
+                        <li>StartAzCompass: {{ data.startAzCompass }}</li>
+                        <li>StartEl: {{ data.startEl }} °</li>
+                        <li>Max: {{ data.maxUTC }}</li>
+                        <li>MaxAz: {{ data.maxAz }} °</li>
+                        <li>MaxAzCompass: {{ data.maxAzCompass }}</li>
+                        <li>MaxEl: {{ data.maxEl }} °</li>
+                        <li>EndAz: {{ data.endAz }} °</li>
+                        <li>EndAzCompass: {{ data.endAzCompass }}</li>
+                        <li>EndEl: {{ data.endEl }} °</li>
+
+                        {% set count.a = count.a + 1 %}
+                    </div>
+                </div>
+                </br>
+                {% endfor %}
+                {% endif %}
+
+                {% if error %}
+                <div class="error">
+                    <h3>{{error}}</h3>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

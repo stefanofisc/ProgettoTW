@@ -1,0 +1,47 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if utente[1] == True %}
+<!-- sei un admin, ti mostro il form della creazione/modifica del post -->
+<form class="edit" method=post >
+    <div class="container">
+        <div class="jumbotron">
+            <h1>
+                <img src="/static/img/type.png" width="65" height="65" class="d-inline-block align-top" alt="">
+                Post
+            </h1>
+            {% if modifica %}
+            <p>Modifica il post</p>
+            {% else %}
+            <p>Compila il form e crea un nuovo post</p>
+            {% endif %}
+        </div>
+        <div class="post-body">
+            <dl>
+                <dt>Titolo</dt>
+                {{ render_field(form.titolo) }}
+                <dt>Url immagine</dt>
+                {{ render_field(form.url_img) }}
+                <dt>Id video</dt>
+                {{ render_field(form.url_video) }}
+                <dt>Body</dt>
+                {{ render_field(form.body) }}
+                <dt>Descrizione video</dt>
+                {{ render_field(form.desc_video) }}
+            </dl>
+            {% if modifica %}
+            <p><input class="generic-btn" type=submit value="Modifica post"></p>
+            {% else %}
+            <p><input class="generic-btn" type=submit value="Crea post"></p>
+            {% endif %}
+        </div>
+    </div>
+</form>
+{% else %}
+<!-- sei un utente o un visitatore, ti mostro un messaggio di errore -->
+<h1>Non sei autorizzato ad accedere a questa pagina</h1>
+{% endif %}
+
+{% endblock %}

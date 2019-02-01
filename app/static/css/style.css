@@ -1,0 +1,294 @@
+body {
+    background-color: rgb(182, 179, 179);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
+}
+.jumbotron {
+    background-color: rgb(42, 44, 46);
+    color: rgb(248, 248, 248);
+}
+
+.post {
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.596);
+    padding: 20px;
+    border-radius: 5px;
+    color: rgb(52, 87, 184);
+}
+
+.error {
+    width: auto;
+    height: auto;
+    background-color: rgba(248, 0, 0, 0.205);
+    padding: 20px;
+    border-radius: 5px;
+    color: rgb(121, 0, 0);
+}
+
+#mapid {
+    border: 2px solid #303030;
+	border-radius: 4px;
+	color: #000;
+}
+
+.post .page-body,
+.post .post-body,
+.news-info p,
+.col-sm-7 .post,
+.col-sm-5 .post,
+.col-sm-6 .post li,
+.col-sm-6 .post p,
+.col-sm-4 .post ul,
+.row .post .page-header p,
+.row .post .page-header ul li {
+    color: black;
+}
+
+.page-body dd input {      /* stile del form visual passes */
+    text-align: center;
+    border: 2px solid transparent;
+    color: #242323;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0;
+    text-decoration: none;
+    text-shadow: none;
+    border-radius: 3px;
+    box-shadow: none;
+    transition: 0.25s;
+    display: block;
+    width: 250px;
+    margin: 0 auto;
+}
+.page-body dd input:focus {      /* il bordo dell'etichetta cambia colore quando selezionato */
+    border: 2px solid rgb(52, 87, 184);
+    box-shadow: none;
+  }
+.page-body p button {           /* bottone del form di visual passes */
+    border: 2px solid transparent;
+    background: rgb(39, 90, 141);
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0;
+    text-decoration: none;
+    text-shadow: none;
+    border-radius: 3px;
+    box-shadow: none;
+    transition: 0.25s;
+    display: block;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.tracking .page-header{     /* etichetta dell'iss tracking in /news */
+    width: 700px;
+    background-color: rgba(255, 255, 255, 0.596);
+    padding: 20px;
+    border-radius: 5px;
+    color: rgb(52, 87, 184);
+    top: 50%;     /* posiziono in linea con il resto degli elementi in /news */
+    left: 50%;
+    transform: translate(0%, -25%);
+}
+
+a h1 {              /* setto il colore di tutti i titoli-link nel sito */
+    color: rgb(52, 87, 184);
+}
+
+.news-info {        /* form delle altre info in /news */
+    width: 700px;
+    background-color: rgba(255, 255, 255, 0.596);
+    padding: 20px;
+    border-radius: 5px;
+    color: rgb(52, 87, 184);
+}
+.dropdown-item {
+    background: rgba(230, 230, 230, 0.212);
+}
+
+input.generic-btn {    /* aspetto bottone generico */
+    border: 2px solid transparent;
+    background: rgb(42, 44, 46);
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0;
+    text-decoration: none;
+    text-shadow: none;
+    border-radius: 3px;
+    box-shadow: none;
+    transition: 0.25s;
+    display: block;
+    width: 250px;
+    margin: 0 auto;
+    float: left;
+}
+
+input.generic-btn:hover{
+    background: rgb(6, 48, 90);
+}
+
+img.post-img {      /* setto dimensione e posizione delle immagini di copertina dei post */
+    width: 650px;
+    height: 350px;
+    float: left;
+}
+
+input.modifica-invia {  /* tasti di modifica post e invia commento */
+    border: 2px solid transparent;
+    background: rgb(46, 95, 145);
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 5px;
+    padding: 5.8px 0;
+    border-radius: 3px;
+    transition: 0.25s;
+    width: 100px;
+    margin: 0 auto;
+}
+
+input.modifica-invia:hover {
+    background: rgb(31, 64, 97);
+}
+
+textarea {          /* aspetto generica text area */
+    background: white;
+    color: rgb(42, 44, 46);
+    width: 400px;
+    height: auto;
+    margin: 5px;
+    padding: 15px;
+    /*overflow: hidden;*/
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 10px;
+    /*float: left;*/
+}
+
+/* aspetto form crea/modifica post */
+form.edit .post-body {  
+    width: 700px;
+    margin: 50px auto;
+    background: rgb(42, 44, 46);
+    color: white;
+    padding: 25px;
+    overflow: hidden;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    float: left;
+}
+
+form.edit .post-body dl dt{ /*etichetta della barra di input*/
+    display: block;
+    line-height: 20px;
+    width: 150px;
+}
+
+form.edit .post-body dd {   /*barra di input*/
+    line-height: 20px;
+    width: 150px;
+    padding-left: 120px;
+}
+
+form.edit .post-body dd input {         /*colore del testo*/
+    color: rgb(42, 44, 46);
+}
+
+form.edit .post-body input.generic-btn{ /*colore del bottone*/
+    background: rgb(27, 112, 192);
+}
+form.edit .post-body input.generic-btn:hover{
+    background: rgb(2, 82, 148);
+}
+form.edit .post-body ul.errors {
+    width: 250px;
+    left: 0px;
+    color: rgb(155, 59, 59);
+}
+/*fine aspetto form crea/modifica post*/
+@media screen and (max-width: 1024px) {
+    .container .row .col-sm-4 .post .page-body dl dd input{
+        width: 250px;
+    }
+    .page-body p button {
+        width: 250px;
+        float: none;
+    }
+    .edit .container .post-body dl dd input,
+    .edit .container .post-body dl dd textarea {
+        width: 350px;
+        float: left;
+    } 
+}
+
+@media screen and (max-width: 768px) {
+    .tracking .page-header,
+    .tracking .map-wrap #mapid, /*no*/
+    .news-info, 
+    form.edit .post-body,
+    .post-body .generic-btn,
+    .generic-btn,
+    .page-body p button {
+        width: auto;
+        float: none;
+    }
+    form.see_more input.generic-btn {
+        width: auto;
+        float: none;
+        position: absolute;
+        bottom: 0px;
+    }
+    .container .row .col-sm-4 .post .page-body dl dd input{
+        width: 350px;
+    }
+    .page-body p button {
+        width: 350px;
+        float: none;
+    }
+    .edit .container .post-body dl dd input,
+    .edit .container .post-body dl dd textarea {
+        width: 250px;
+        float: left;
+    } 
+}
+
+@media screen and (max-width: 480px) {
+    .container .row .col-sm-4 .post .page-body dl dd input{
+        width: 250px;
+    }
+    .page-body p button {
+        width: 250px;
+        float: none;
+    }
+    dt {
+        text-align: left;
+        float: left;
+    }
+    .edit .container .post-body dl dd input,
+    .edit .container .post-body dl dd textarea {
+        width: 180px;
+        float: left;
+    } 
+}
+
+@media screen and (max-width: 320px) {
+    .container .row .col-sm-4 .post .page-body dl dd input{
+        width: 150px;
+    }
+    .page-body p button {
+        width: 150px;
+        float: none;
+    }
+    dt {
+        text-align: left;
+        float: left;
+    }
+    .edit .container .post-body dl dd input,
+    .edit .container .post-body dl dd textarea {
+        width: 100px;
+        float: right;
+    } 
+}
+

@@ -1,0 +1,4 @@
+Per avviare il progetto, eseguire i due seguenti comandi da terminale:
+
+$ . venv/bin/activate
+$ python myapp.py

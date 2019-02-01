@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin="" />
+
+<style>
+    .map-wrap {
+        border: 3px solid #000;
+        width: 700px;
+        height: 400px;
+    }
+
+    #mapid {
+        width: 700px;
+        height: 400px;
+    }
+</style>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>
+            <img src="/static/img/satellite.png" width="65" height="65" class="d-inline-block align-top" alt="">
+            Satelliti
+        </h1>
+        <p>Traccia un satellite in tempo reale...</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            {% if sat_info %}
+            <div class="post">
+                <h1>{{sat_info.name}}</h1>
+                <ul>
+                    <li><b>NORAD id:</b> {{sat_info.satid}}</li>
+                    <li><b>Perigeo:</b> {{sat_info.perigee}}</li>
+                    <li><b>Apogeo:</b> {{sat_info.apogee}}</li>
+                    <li><b>Inclinazione:</b> {{sat_info.inclination}}</li>
+                    <li><b>Periodo:</b> {{sat_info.period}}</li>
+                    <li><b>Data di lancio:</b> {{sat_info.launchdate}}</li>
+                    <li><b>Da:</b> {{sat_info.source}}</li>
+                    <li><b>Descrizione:</b> {{sat_info.description}}</li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-sm-4">
+            <div class="maps">
+                <div class="page-header">
+                    <h1>Live tracking</h1>
+                    <div class="map-wrap">
+                        <div id="mapid"></div>
+                        <script id="getpos" data-name="{{norad_id}}" src="/static/js/get-iss-pos.js"></script>
+                    </div>
+                </div>
+
+                <div class="page-body">
+                    {% if sat_info.name == 'SPACE STATION' %}
+                    <h1>Live Streaming</h1>
+                    <iframe width="700" height="400" src="https://www.ustream.tv/embed/17074538?html5ui" scrolling="no"
+                        allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+Copyright ® </br></br>
+
+</br></br>
+{% endblock %}

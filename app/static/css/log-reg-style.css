@@ -1,0 +1,158 @@
+body {
+  /*background-image: url("/static/img/univ.jpg");*/
+  background-color: rgb(47, 48, 49);
+  
+}
+
+.container {      /* Il riquadro che contiene il form di username e password */
+width: 400px;
+background-color: rgba(255, 255, 255, 0.596);
+padding: 20px;
+border-radius: 5px;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.app-title {      /* La scritta login sopra il form */
+  text-align: center;
+  color: rgb(47, 48, 49);
+}
+
+.form-group {     /* dimensione e posizione delle etichette username e password */
+  text-align: center;
+  width: 400px;
+  top: 50%;     /* posiziono il form al centro della pagina */
+  left: 50%;
+  transform: translate(-37.5%, 9%);
+}
+
+dd input {      /* stile delle etichette username e password */
+  text-align: center;
+  border: 2px solid transparent;
+  color: #242323;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+
+dd input:focus {      /* il bordo dell'etichetta cambia colore quando selezionato */
+  border: 2px solid #3498DB;
+  box-shadow: none;
+}
+
+.form-group button {  /* Il bottone di login/registrazione */
+  border: 2px solid transparent;
+  background: rgb(47, 48, 49);
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+
+form.reg dd ul.errors { /*errori field registrazione*/
+  color: rgb(180, 54, 54);
+  line-height: 20px;
+  left: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .container,
+  .app-title,
+  .form-group dd input {
+    width: auto;
+    float:none;
+    display: -webkit-inline-box;
+  }
+  .form-group button {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 200px;
+    height: auto;
+  }
+  .app-title {
+    top: -40px;
+    left: 55px;
+    position: absolute;
+    font-size: 13px;
+    color: white;
+  }
+  .app-title img.login-image {
+    display: none;
+  }
+  .form-group dd input {
+    width: 100px;
+    height: 40px;
+    position: sticky;
+  }
+  .form-group button {
+    width: 100px;
+    height: 40px;
+    left: 155px;
+    position: absolute;
+    bottom: auto;
+  }
+  p {
+    left: 160px;
+    position: absolute;
+    font-size: 14px;
+    bottom: -90px;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    width: 180px;
+    height: auto;
+  }
+  .app-title {
+    top: -50px;
+    position: absolute;
+    font-size: 10px;
+    left: 40px;
+    color: white;
+  }
+  .app-title img.login-image {
+    display: none;
+  }
+  .form-group dd input {
+    width: 100px;
+    height: 40px;
+  }
+  .form-group button {
+    width: 100px;
+    height: 40px;
+    left: 155px;
+    position: absolute;
+    bottom: auto;
+  }
+  p {
+    left: 150px;
+    position: absolute;
+    font-size: 13px;
+    bottom: -70px;
+    color: white;
+  }
+}

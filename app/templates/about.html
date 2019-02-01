@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+   <div class="jumbotron">
+      <h1>
+         <img src="/static/img/info-icon.png" width="65" height="65" class="d-inline-block align-top" alt="">
+         {{titolo}}
+      </h1>
+      <p>Informazioni e contatti</p>
+   </div>
+   <div class="row">
+      <div class="col-sm-6">
+         <div class="post">
+            <div class="page-header">
+               <h3>NORAD id - Catalogo</h3>
+            </div>
+            <div class="page-body">
+               <p>
+                  {% for sat in satellites %}
+                  <li><b>{{ sat['name'] }}:</b> {{ sat['satid'] }}</li>
+                  {% endfor %}
+               </p>
+
+            </div>
+         </div>
+      </div>
+      <div class="col-sm-6">
+         <div class="post">
+            <h3>Link utili</h3>
+            <ul>
+               <li><a href="https://www.n2yo.com">n2yo</a></li>
+               <li><a href="https://www.ai4business.it/">ai4buisness</a></li>
+               <li><a href="https://www.sas.com/it_it/insights/analytics/machine-learning.html">Machine Learning</a></li>
+               <li><a href="https://www.nasa.gov/">NASA</a></li>
+               <li><a href="https://www.esa.int/">ESA</a></li>
+            </ul>
+            <h3>Sviluppo web app</h3>
+            <p class="text-justify">
+               Tecnologie utilizzate:
+               <li>Flask</li>
+               <li>Mongodb</li>
+               <li>Python</li>
+               <li>Jinja2, HTML, CSS</li>
+               <li>Leafletjs, Javascript</li>
+               </br>
+               <p>API: la web app utilizza delle API per il tracking della posizione dei visitatori,
+               fornite da <a href="https://ipstack.com/">ip-stack</a>, ed altre API per il live tracking dei satelliti,
+               fornite
+               dal sito <a href="https://www.n2yo.com">n2yo</a>.</p>
+            </p>
+         </div>
+      </div>
+
+   </div>
+   </br>
+   <div class="row">
+      <div class="post">
+         <div class="page-header">
+            <h1>About me</h1>
+            <p>
+               Ciao! Mi chiamo Stefano, e sono uno studente di informatica appassionato di spazio e intelligenza artificiale.
+            </p>
+         </div>
+         <h3>Percorso formativo</h3>
+         <ul>
+            <li>Liceo Scientifico Vittorio Imbriani</li>
+            <li>Università degli Studi di Napoli Parthenope</li>
+         </ul>
+         <h3>Informazioni di contatto</h3>
+         <ul>
+            <li>Tel: +39 3931170785</li>
+            <li>email: stefano.fiscale001@studenti.uniparthenope.it</li>
+         </ul>
+      </div>
+   </div>
+</div>
+
+{% endblock %}

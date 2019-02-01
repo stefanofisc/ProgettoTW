@@ -1,0 +1,22 @@
+{% extends "log-reg_form.html" %}
+
+{% block content %}
+
+<form class="reg" action="/register" method="post">
+  <div class="form-group">
+    {{ render_field(form.nome) }}
+    {{ render_field(form.cognome) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.username) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+
+    <button type="submit" class="btn btn-primary btn-large btn-block">Sign up</button>
+    <br>
+    <p>Sei registrato? <a href="/login">Accedi!</a> </p>
+    
+    </br>
+  </div>
+</form>
+
+{% endblock %}

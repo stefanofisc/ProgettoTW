@@ -1,0 +1,25 @@
+#dialogoverlay {   /* cambia colore sfondo se si apre la finestra */
+	display: none;
+	opacity: .8;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 10;
+}
+#dialogbox {     /* finestra di dialogo da mostrare in caso di errore */
+  text-align: center;
+	display: none;
+	position: fixed;
+	background: #000;
+	border-radius:7px; 
+	width:550px;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, 9%);
+}
+#dialogbox > div{ background:rgb(255, 255, 255); margin:8px; }
+#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
+#dialogbox > div > #dialogboxbody{ background:#333; padding:20px; color:#FFF; }
+#dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }

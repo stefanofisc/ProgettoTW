@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="/static/css/homepage.css">
+{% endblock %}
+
+
+{% if ora_del_giorno > 3 and ora_del_giorno < 14  %}
+ {% set messaggio = 'Buongiorno' %}
+{% elif ora_del_giorno > 13 and ora_del_giorno < 19 %}
+ {% set messaggio = 'Buon pomeriggio' %}
+{% else %}
+ {% set messaggio = 'Buona sera' %}
+{% endif %}
+
+{% block content %}
+<div class="jumbotron cover">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Space Valley</h1>
+        <p>
+            {% if utente[0] == 'Guest' %}
+             <h3> {{ messaggio }} utente! </h3>
+            {% else %}
+             <h3>{{ messaggio }} {{ utente[0] }}! </h3>
+            {% endif %}
+        </p>
+      </div>
+    </div> 
+  </div>
+</div>
+{% endblock %}
+{% block footer %}
+ <a href="/about">Links</a>
+{% endblock %}

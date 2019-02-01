@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin="" />
+
+<style>
+  .map-wrap {         
+      border: 3px solid #000;         
+      width: 700px;         
+      height: 400px;   
+    }   
+    #mapid {         
+      width: 700px;         
+      height: 400px;   
+    }
+  </style>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>
+      <img src="/static/img/comet.png" width="65" height="65" class="d-inline-block align-top" alt="">
+      News
+    </h1>
+    <p>Resta sempre aggiornato...</p>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+
+      {% for post in posts %}
+
+      <div class="post">
+        <div class="page-header">
+          <a href="/posts/id/{{ post._id }}">
+            <h1>{{ post.titolo }}</h1>
+          </a>
+          <b>Autore</b> <span class="label label-primary">{{ post.autore }}</span> <b>Data</b> <span class="label label-info">{{
+            post.creato_il }}</span>
+        </div>
+        <div class="post-body">
+          <p class="text-justify">{{ post.body[:200] }}...</p>
+        </div>
+        <a href="/posts/id/{{ post._id }}"> Continua a leggere...</a>
+      </div>
+      </br>
+      {% endfor %}
+      <form class="see_more" action="/news" method="POST">
+        <input class="generic-btn" type=submit value="See more">
+      </form>
+
+    </div>
+    <div class="col-sm-4">
+      <div class="tracking">
+        <div class="page-header">
+          <h1>SPACE STATION</h1>
+          <h3>Live tracking</h3>
+        </div>
+        <div class="page-body">
+          <div class="map-wrap">
+            <div id="mapid"></div>
+            <script id="getpos" data-name="{{norad_id}}" src="/static/js/get-iss-pos.js"></script>
+          </div>
+        </div>
+      </div>
+      </br></br>
+      <div class="news-info">
+
+        <h1>Traccia un satellite</h1>
+
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Scegli il satellite...
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            {% for sat in satellites %}
+            <li><a class="dropdown-item" href="/satellite/{{sat['satid']}}">{{ sat['name'] }}</a></li>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+      </br>
+      <div class="news-info">
+
+        <a href="/visualpasses">
+          <h1>Visual passes</h1>
+        </a>
+
+        <p>Vuoi scoprire quale satellite sarà visibile nel tuo cielo? <a href="/visualpasses">Clicca
+            qui</a></p>
+      </div>
+
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block footer %}
+Copyright ® </br></br>
+
+</br></br>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+
+<style media="screen">
+    .post-body img {
+        max-width: 100%;
+    }
+</style>
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>
+                <img src="/static/img/type.png" width="65" height="65" class="d-inline-block align-top" alt="">
+            Post
+        </h1>
+        <p>Resta sempre aggiornato...</p>
+    </div>
+    <div class="row">
+        <form action="/posts/id/{{post._id}}/modify" method="POST">
+            <div class="col-sm-7">
+                <div class="page-header">
+                    <h1>{{ post.titolo }}</h1>
+                    <img class="post-img" src="{{post.url_img}}" alt="{{post.titolo}}">
+                    <p>
+                        <b>Autore</b> <span class="label label-primary">{{ post.autore }}</span>
+                        <b>Data</b> <span class="label label-info">{{ post.creato_il }}</span>
+                        {% if utente[1] == True %}
+                        <!-- sei un admin, puoi modificare i post-->
+                        <input class="modifica-invia" type=submit value="Modifica post">
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="post">
+                    {{ post.body }}
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="page-header">
+                    </br>
+                    <h1>Video</h1>
+                    <iframe width="455" height="300" src="https://www.youtube.com/embed/{{post.url_video}}" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="post">
+                    {{ post.desc_video }}
+                </div>
+            </div>
+            </br>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <form action="/posts/id/{{ post._id }}" method="POST">
+                <h3>Commenti</h3>
+                {% if commenti %}
+                {% for commento in commenti %}
+                <div class="comments">
+                    <div class="page-header">
+                        <b>Autore</b> <span class="label label-primary">{{ commento.autore }}</span>
+                        <b>Data</b> <span class="label label-info">{{ commento.creato_il }}</span>
+                    </div>
+                    <div class="post">
+                        <p class="text-justify">{{ commento.body }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% if utente[0] != 'Guest' %}
+                <!-- Non sei un visitatore, puoi lasciare un commento -->
+                <div class="page-header">
+                    <h4>Scrivi un commento</h4>
+                </div>
+                <div class="post-body"> {{ render_field(form.body) }} </div>
+                <p><input class="modifica-invia" type="submit" value="Invia"></p>
+                {% else %}
+                </br></br>
+                <p>Vuoi lasciare un commento? <a href="{{ url_for('login') }}">Accedi</a></p>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
