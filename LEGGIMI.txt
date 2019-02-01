@@ -1,4 +1,6 @@
-Per avviare il progetto, eseguire i due seguenti comandi da terminale:
+Pacchetti necessari:
+Flask, Flask-PyMongo, mongodb, flask-wtf, requests, venv (ambiente virtuale facoltativo, ma consigliato).
 
-$ . venv/bin/activate
+Per avviare il progetto, eseguire i due seguenti comandi da terminale:
+$ . venv/bin/activate (se il progetto gira in ambiente virtuale)
 $ python myapp.py
