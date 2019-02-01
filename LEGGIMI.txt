@@ -1,5 +1,27 @@
+Viene fornita una breve descrizione e guida sui pacchetti necessari per il progetto e come installarli
 Pacchetti necessari:
 Flask, Flask-PyMongo, mongodb, flask-wtf, requests, venv (ambiente virtuale facoltativo, ma consigliato).
+
+Per installare i suddetti pacchetti:
+1- Ambiente virtuale (facoltativo) :
+$ python3 -m venv venv
+$ . venv/bin/activate
+
+2- Flask e Flask-PyMongo
+$ pip install Flask
+$ pip install Flask-PyMongo
+
+3- Mongodb
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+$ echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb-org
+
+4- Flask-WTF
+$ pip install flask-wtf
+
+5- Requests
+$ pip install requests
 
 Per avviare il progetto, eseguire i due seguenti comandi da terminale:
 $ . venv/bin/activate (se il progetto gira in ambiente virtuale)
